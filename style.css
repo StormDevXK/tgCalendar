@@ -1,0 +1,76 @@
+body {
+    font-family: Roboto, 'sans-serif';
+    margin: 0;
+    padding: 0;
+}
+
+.calendarContainer {
+    text-align: center;
+    width: 350px;
+    margin: auto;
+}
+
+.calendarNavigation {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        font-weight: 500;
+    }
+    i {
+        font-size: 28px;
+        margin: 0 26px;
+        cursor: pointer;
+    }
+}
+
+#dateStr {
+    font-size: 25px;
+    margin: 0;
+}
+
+#daysTable {
+    margin: auto;
+    border-spacing: 0;
+}
+
+tr {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+tr > td {
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    transition: 0.1s;
+    text-decoration: none;
+    cursor: default;
+    user-select: none;
+    border-radius: 50%;
+}
+
+tr > td:hover {
+    background-color: dimgray;
+    color: white;
+}
+
+.daysName {
+    background-color: #fff0;
+}
+
+.daysName td{
+    background-color: darkgray;
+    border-radius: 0;
+}
+
+.daysName td:hover{
+    background-color: darkgray;
+    color: black;
+}
+
+.anotherMonth {
+    color: darkgray;
+}
