@@ -51,13 +51,13 @@ tr > td {
     text-decoration: none;
     cursor: default;
     user-select: none;
-    border-radius: 50%;
     border: 1px solid #0000;
 }
 
 tr > td:hover {
     background-color: dimgray;
     color: white;
+    border-radius: 50%;
 }
 
 .daysName {
@@ -72,6 +72,7 @@ tr > td:hover {
 .daysName td:hover{
     background-color: darkgray;
     color: black;
+    border-radius: 0;
 }
 
 .anotherMonth {
