@@ -82,17 +82,17 @@ tr > td:active {
 }
 
 .daysName {
-    background-color: #fff0;
+    /*background-color: #fff0;*/
 }
 
 .daysName td{
-    background-color: var(--tg-theme-secondary-bg-color);
+    /*background-color: var(--tg-theme-secondary-bg-color);*/
     border-radius: 0;
     font-weight: 500;
 }
 
 .daysName td:hover{
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
     border-radius: 0;
 }
