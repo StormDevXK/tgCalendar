@@ -38,10 +38,6 @@ body {
     border-spacing: 0;
 }
 
-tr {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
 tr > td {
     font-size: 20px;
     width: 42px;
@@ -51,13 +47,13 @@ tr > td {
     text-decoration: none;
     cursor: default;
     user-select: none;
-    border: 1px solid #0000;
+    border: 2px solid #0000;
+    border-radius: 50%;
 }
 
 tr > td:hover {
     background-color: dimgray;
     color: white;
-    border-radius: 50%;
 }
 
 .daysName {
@@ -65,12 +61,12 @@ tr > td:hover {
 }
 
 .daysName td{
-    background-color: darkgray;
+    background-color: #dedede;
     border-radius: 0;
 }
 
 .daysName td:hover{
-    background-color: darkgray;
+    background-color: #dedede;
     color: black;
     border-radius: 0;
 }
@@ -80,5 +76,11 @@ tr > td:hover {
 }
 
 .nowDay {
-    border-color: #00B7FF;
+    border: 2px solid #8d8d8d;
+    border-radius: 50%;
+    /*background-color: #00B7FF;*/
+}
+
+.arrow {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

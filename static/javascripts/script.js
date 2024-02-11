@@ -46,9 +46,20 @@ function monthGenerator(date){
         for(let d = 1; d <= 7; d++){
             let l = r.appendChild(document.createElement('td'))
             l.innerText = monthArr[w][d-1][0]
+            l.id = new Date(date.getFullYear(), date.getMonth(), monthArr[w][d-1][0]).getTime().toString()
+            if(l.id === new Date().setHours(0, 0, 0, 0).toString()){l.classList.add('nowDay')}
+
             if(monthArr[w][d-1][1]){l.classList.add('anotherMonth')}
         }
     }
+    // let monthArr = [[]]
+    // let dayCount = 1
+    // let dt = document.querySelector('#daysTable')
+    // for(let w = 0; w < 5; w++){
+    //     for(let d = 0; d < 5; d++){
+    //
+    //     }
+    // }
 }
 
 
