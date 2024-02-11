@@ -1,15 +1,34 @@
+/*@keyframes shake {*/
+/*    25% {transform: translateX(5px)}*/
+/*    !*50% {transform: translateX(-20px)}*!*/
+/*    75% {transform: translateX(-5px)}*/
+/*}*/
+/*@keyframes shakeRight {*/
+/*    50% {transform: translateX(5px)}*/
+/*}*/
+/*@keyframes shakeLeft {*/
+/*    50% {transform: translateX(-5px)}*/
+/*}*/
+
+
 body {
     font-family: Roboto, 'sans-serif';
-    margin: 0;
+    margin: 10px auto;
     padding: 0;
+    width: max-content;
     color: var(--tg-theme-text-color);
-    background-color: var(--tg-theme-bg-color);
+    background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .calendarContainer {
     text-align: center;
-    width: 350px;
-    margin: auto;
+    width: max-content;
+    margin: 10px auto;
+    padding: 0 10px 10px;
+    background-color: var(--tg-theme-bg-color);
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+    border-radius: 20px;
+    /*transition: 0.5s;*/
 }
 
 .calendarNavigation {
@@ -19,12 +38,7 @@ body {
     justify-content: space-between;
     align-items: center;
     p {
-        font-weight: 500;
-    }
-    i {
-        font-size: 28px;
-        margin: 0 26px;
-        cursor: pointer;
+        font-weight: 600;
     }
 }
 
@@ -56,6 +70,17 @@ tr > td:hover {
     color: white;
 }
 
+tr > td:active {
+    background-color: dimgray;
+}
+
+@media (hover: none) {
+    tr > td:hover {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+
 .daysName {
     background-color: #fff0;
 }
@@ -63,6 +88,7 @@ tr > td:hover {
 .daysName td{
     background-color: var(--tg-theme-secondary-bg-color);
     border-radius: 0;
+    font-weight: 500;
 }
 
 .daysName td:hover{
@@ -78,9 +104,51 @@ tr > td:hover {
 .nowDay {
     border: 2px solid #8d8d8d;
     border-radius: 50%;
-    /*background-color: #00B7FF;*/
+    font-weight: 500;
 }
 
 .arrow {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: 0.1s;
+    width: 35px;
+    font-size: 28px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.arrow:active {
+    transform: scale(1.2);
+}
+
+.todayTitle {
+    display: flex;
+    align-items: center;
+    background-color: var(--tg-theme-bg-color);
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+    border-radius: 20px;
+    padding: 10px;
+    transition: 0.1s;
+    p {
+        margin: 0;
+        user-select: none;
+    }
+    #todayDay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 27px;
+        border-radius: 50%;
+        border: 2px solid #8d8d8d;
+        width: 46px;
+        height: 46px;
+    }
+    #todayTitleText {
+        font-size: 25px;
+        margin-left: 5px;
+    }
+}
+
+.todayTitle:active {
+    transform: scale(0.98);
 }

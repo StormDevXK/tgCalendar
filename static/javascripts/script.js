@@ -1,6 +1,7 @@
 "use strict"
 let monthNames= ["January","February","March","April","May","June","July",
     "August","September","October","November","December"]
+let daysNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 function daysInMonth (month, year) {
     return new Date(year, month, 0).getDate();
 }
@@ -52,27 +53,38 @@ function monthGenerator(date){
             if(monthArr[w][d-1][1]){l.classList.add('anotherMonth')}
         }
     }
-    // let monthArr = [[]]
-    // let dayCount = 1
-    // let dt = document.querySelector('#daysTable')
-    // for(let w = 0; w < 5; w++){
-    //     for(let d = 0; d < 5; d++){
-    //
-    //     }
-    // }
 }
 
 
 let date = new Date()
 monthGenerator(date)
+document.querySelector('#todayDay').innerText = date.getDate()
+document.querySelector('#todayTitleText').innerText = daysNames[date.getDay()]
 
 document.querySelector('#monthLeft').addEventListener('click', (e) => {
     date = new Date(date.getFullYear(), date.getMonth()-1)
     monthGenerator(date)
+    // setTimeout(()=>{
+    //     document.querySelector('.calendarContainer').style.animation = 'shakeLeft 0.2s'
+    // }, 200)
+    // document.querySelector('.calendarContainer').style.animation = ''
 })
 
 document.querySelector('#monthRight').addEventListener('click', (e) => {
     date = new Date(date.getFullYear(), date.getMonth()+1)
     monthGenerator(date)
+    // setTimeout(()=>{
+    //     document.querySelector('.calendarContainer').style.animation = 'shakeRight 0.2s'
+    // }, 200)
+    // document.querySelector('.calendarContainer').style.animation = ''
+})
+
+document.querySelector('.todayTitle').addEventListener('click', (e) => {
+    date = new Date()
+    monthGenerator(date)
+    // setTimeout(()=>{
+    //     document.querySelector('.calendarContainer').style.animation = 'shake 0.2s'
+    // }, 200)
+    // document.querySelector('.calendarContainer').style.animation = ''
 })
 
