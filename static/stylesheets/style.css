@@ -2,8 +2,8 @@ body {
     font-family: Roboto, 'sans-serif';
     margin: 0;
     padding: 0;
-    color: #000;
-    background-color: #fff
+    color: var(--tg-theme-text-color);
+    background-color: var(--tg-theme-bg-color);
 }
 
 .calendarContainer {
@@ -61,13 +61,13 @@ tr > td:hover {
 }
 
 .daysName td{
-    background-color: #dedede;
+    background-color: var(--tg-theme-secondary-bg-color);
     border-radius: 0;
 }
 
 .daysName td:hover{
-    background-color: #dedede;
-    color: black;
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-text-color);
     border-radius: 0;
 }
 
