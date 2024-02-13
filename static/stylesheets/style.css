@@ -10,24 +10,32 @@
 /*    50% {transform: translateX(-5px)}*/
 /*}*/
 
+:root {
+    --tg-theme-button-color: #b63e3e;
+    --tg-theme-text-color: #000000;
+    --tg-theme-bg-color: #ffffff;
+    --tg-theme-secondary-bg-color: #e3e3e3;
+}
 
 body {
     font-family: Roboto, 'sans-serif';
     margin: 10px auto;
     padding: 0;
-    width: max-content;
+    width: min-content;
     color: var(--tg-theme-text-color);
     background-color: var(--tg-theme-secondary-bg-color);
+}
+
+.anyContainer {
+    margin: 10px auto;
+    padding: 10px;
+    background-color: var(--tg-theme-bg-color);
+    border-radius: 20px;
 }
 
 .calendarContainer {
     text-align: center;
     width: max-content;
-    margin: 10px auto;
-    padding: 0 10px 10px;
-    background-color: var(--tg-theme-bg-color);
-    /*background-color: rgba(0, 0, 0, 0.1);*/
-    border-radius: 20px;
     /*transition: 0.5s;*/
 }
 
@@ -52,7 +60,8 @@ body {
     border-spacing: 0;
 }
 
-tr > td {
+#daysTable td {
+    position: relative;
     font-size: 20px;
     width: 42px;
     height: 42px;
@@ -62,20 +71,31 @@ tr > td {
     cursor: default;
     user-select: none;
     border: 2px solid #0000;
-    border-radius: 50%;
+    border-radius: 30%;
 }
 
-tr > td:hover {
+#daysTable td:hover {
     background-color: dimgray;
     color: white;
 }
 
-tr > td:active {
+#daysTable td:active {
     background-color: dimgray;
 }
 
+.eventDot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    /*--tg-theme-button-color: #b63e3e;*/
+    background-color: var(--tg-theme-button-color);
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
+
 @media (hover: none) {
-    tr > td:hover {
+    #daysTable td:hover {
         background-color: inherit;
         color: inherit;
     }
@@ -102,8 +122,8 @@ tr > td:active {
 }
 
 .nowDay {
-    border: 2px solid #8d8d8d;
-    border-radius: 50%;
+    border: 2px solid #8d8d8d!important;
+    border-radius: 30%;
     font-weight: 500;
 }
 
@@ -123,10 +143,6 @@ tr > td:active {
 .todayTitle {
     display: flex;
     align-items: center;
-    background-color: var(--tg-theme-bg-color);
-    /*background-color: rgba(0, 0, 0, 0.1);*/
-    border-radius: 20px;
-    padding: 10px;
     transition: 0.1s;
     p {
         margin: 0;
@@ -138,17 +154,50 @@ tr > td:active {
         align-items: center;
         font-weight: 500;
         font-size: 27px;
-        border-radius: 50%;
+        border-radius: 30%;
         border: 2px solid #8d8d8d;
         width: 46px;
         height: 46px;
     }
     #todayTitleText {
         font-size: 25px;
-        margin-left: 5px;
+        margin-left: 7px;
     }
 }
 
 .todayTitle:active {
     transform: scale(0.98);
+}
+
+.noteList {
+    background-color: var(--tg-theme-bg-color);
+    border-radius: 20px;
+    padding: 10px;
+    .noteListTitle {
+        text-align: center;
+        font-weight: 600;
+        font-size: 25px;
+        margin: 0;
+    }
+}
+
+.noteCard {
+    position: relative;
+    margin: 10px 0;
+    padding: 2px;
+}
+
+.noteLine {
+    position: absolute;
+    /*left: 5px;*/
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: var(--tg-theme-button-color);
+    height: 100%;
+    width: 6px;
+    border-radius: 6px;
+}
+
+.noteText {
+    margin: auto auto auto 20px;
 }

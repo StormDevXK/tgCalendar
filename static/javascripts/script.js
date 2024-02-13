@@ -49,7 +49,7 @@ function monthGenerator(date){
             l.innerText = monthArr[w][d-1][0]
             l.id = new Date(date.getFullYear(), date.getMonth(), monthArr[w][d-1][0]).getTime().toString()
             if(l.id === new Date().setHours(0, 0, 0, 0).toString()){l.classList.add('nowDay')}
-
+            // if()
             if(monthArr[w][d-1][1]){l.classList.add('anotherMonth')}
         }
     }
