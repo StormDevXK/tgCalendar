@@ -15,7 +15,8 @@ fetch('/dbapi', {
         for(let i = 0; i < data.length; i++){
             let tableElems = document.querySelector('#daysTable').querySelectorAll('td')
             for(let j = 0; j < tableElems.length; j++){
-                if(tableElems[j].id === data[i].dayId.toString()){
+                let dayId = new Date(data[i].createdAt).setHours(0, 0, 0, 0)
+                if(tableElems[j].id === dayId.toString()){
                     let elem = document.createElement('div')
                     elem.classList.add('eventDot')
                     tableElems[j].prepend(elem)

@@ -56,5 +56,8 @@ const Note = sequelize.define(
     }
 )
 
-User.sync({ alter: true })
-Note.sync({ alter: true })
+// User.sync({ alter: true })
+// Note.sync({ alter: true })
+// Note.sync()
+
+module.exports = {User, Note}
