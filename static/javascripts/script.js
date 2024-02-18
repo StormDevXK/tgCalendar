@@ -1,4 +1,13 @@
 "use strict"
+let tgUserId
+try {
+    let tg = window.Telegram.WebApp
+    tgUserId = tg.initDataUnsafe.user.id
+}
+catch {
+    tgUserId = 0
+}
+
 let monthNames= ["January","February","March","April","May","June","July",
     "August","September","October","November","December"]
 let daysNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -107,14 +116,15 @@ document.querySelector('#sendNotes').addEventListener('click', (e) => {
         },
         body: JSON.stringify({
             func: 'sendNewNote',
-            userId: tg.initDataUnsafe.user.id,
-            // userId: 100312331,
+            // userId: tg.initDataUnsafe.user.id,
+            userId: tgUserId,
             text: document.querySelector('#newNoteArea').value,
             primaryNote: 0,
         })
     }).then(r => {
         console.log(r)
         if(r.status === 200) {
+            updateNotes()
             document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
         }
     })
