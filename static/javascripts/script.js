@@ -88,3 +88,34 @@ document.querySelector('.todayTitle').addEventListener('click', (e) => {
     // document.querySelector('.calendarContainer').style.animation = ''
 })
 
+document.addEventListener('click', (e) => {
+    if(!document.querySelector('.newNotePopup').contains(e.target) && document.querySelector('.newNotePopup').classList.contains('newNotePopupVisible')){
+        document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+    }
+})
+document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
+    setTimeout(() => {
+        document.querySelector('.newNotePopup').classList.add('newNotePopupVisible')
+    }, 1)
+})
+
+document.querySelector('#sendNotes').addEventListener('click', (e) => {
+    fetch('/dbapi', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            func: 'sendNewNote',
+            userId: tg.initDataUnsafe.user.id,
+            // userId: 100312331,
+            text: document.querySelector('#newNoteArea').value,
+            primaryNote: 0,
+        })
+    }).then(r => {
+        console.log(r)
+        if(r.status === 200) {
+            document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+        }
+    })
+})

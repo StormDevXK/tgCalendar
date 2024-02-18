@@ -13,16 +13,19 @@
 
 :root {
     --tg-theme-button-color: #b63e3e;
+    --tg-theme-button-text-color: #ffffff;
     --tg-theme-text-color: #000000;
+    --tg-theme-hint-color: #484848;
     --tg-theme-bg-color: #ffffff;
     --tg-theme-secondary-bg-color: #e3e3e3;
+    --body-width: 356px;
 }
 
 body {
     font-family: Roboto, 'sans-serif';
     margin: 10px auto;
     padding: 0;
-    width: min-content;
+    width: var(--body-width);
     color: var(--tg-theme-text-color);
     background-color: var(--tg-theme-secondary-bg-color);
 }
@@ -174,12 +177,21 @@ body {
     background-color: var(--tg-theme-bg-color);
     border-radius: 20px;
     padding: 10px;
+    position: relative;
     .noteListTitle {
         text-align: center;
         font-weight: 600;
         font-size: 25px;
         margin: 0;
     }
+}
+
+.noteList > i {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .noteCard {
@@ -202,3 +214,63 @@ body {
 .noteText {
     margin: auto auto auto 20px;
 }
+
+.newNotePopup {
+    position: fixed;
+    bottom: -500px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--body-width);
+    min-height: 500px;
+    background-color: var(--tg-theme-bg-color);
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    transition: 0.7s;
+    z-index: 999;
+    .newNoteTitle {
+        color: var(--tg-theme-text-color);
+        text-align: center;
+        font-size: 25px;
+        font-weight: 600;
+    }
+    textarea {
+        border: none;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 10px;
+        width: calc(var(--body-width) - 40px);
+        min-height: 200px;
+        resize: none;
+        background-color: var(--tg-theme-secondary-bg-color);
+        color: var(--tg-theme-text-color);
+    }
+    textarea::placeholder {
+        color: var(--tg-theme-hint-color);
+    }
+    #sendNotes{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        border: none;
+        background-color: var(--tg-theme-button-color);
+        color: var(--tg-theme-button-text-color);
+        border-radius: 20px;
+        width: 160px;
+        height: 50px;
+    }
+}
+
+.newNotePopupVisible {
+    bottom: 0;
+    box-shadow: 0 0 0 10000px rgba(0,0,0,.5);
+}
+
+/*.backdrop {*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    z-index: 1;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: #b63e3e;*/
+/*}*/

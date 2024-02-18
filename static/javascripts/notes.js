@@ -7,6 +7,7 @@ fetch('/dbapi', {
         'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify({
+        func: 'getData',
         // tgId: tg.initDataUnsafe.user.id,
         tgId: 100312331,
     })
