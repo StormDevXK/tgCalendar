@@ -264,6 +264,8 @@ body {
             margin: 10px;
             padding: 5px;
             background-color: var(--tg-theme-secondary-bg-color);
+            color: var(--tg-theme-text-color);
+            width: min-content;
             border-radius: 10px;
             border: none;
             height: 30px;
