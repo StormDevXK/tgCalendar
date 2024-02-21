@@ -26,10 +26,19 @@
 <div class="newNotePopup">
     <p class="newNoteTitle">New note</p>
     <textarea placeholder="Write your note" id="newNoteArea"></textarea>
+    <div class="newNoteDateContainer">
+        <input
+                type="datetime-local"
+                id="newNoteDateTime"
+                value="2024-02-21T04:00"
+                min="1970-01-01T00:00"
+                max="2050-12-31T00:00">
+    </div>
     <button id="sendNotes">Save note</button>
 </div>
 <div class="viewNotePopup">
     <p class="viewNoteTitle">View note</p>
+    <p class="viewNoteDate">null</p>
     <p class="viewNoteText"></p>
 <!--    <textarea placeholder="Write your note" id="editNoteArea"></textarea>-->
     <button id="closeNote">Close note</button>

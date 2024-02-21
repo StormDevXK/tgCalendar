@@ -44,10 +44,10 @@ function updateNotes(){
                 noteCardDiv.appendChild(noteTextP)
                 noteCardDiv.id = `noteId${data[i].id}`
                 noteCardDiv.addEventListener('click', (e) => {
-                    console.log(noteCardDiv.id.slice(6))
                     setTimeout(() => {
                         document.querySelector('.viewNotePopup').classList.add('viewNotePopupVisible')
                         document.querySelector('.viewNoteText').innerHTML = data[i].text
+                        document.querySelector('.viewNoteDate').innerHTML = new Date(data[i].createdAt).toLocaleString()
                     }, 1)
                 })
                 document.querySelector('#noteListDiv').appendChild(noteCardDiv)

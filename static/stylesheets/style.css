@@ -235,6 +235,7 @@ body {
         text-align: center;
         font-size: 25px;
         font-weight: 600;
+        margin-bottom: 5px;
     }
     textarea {
         font-family: Roboto, 'sans-serif';
@@ -244,7 +245,7 @@ body {
         padding: 10px;
         margin: 10px;
         width: calc(var(--body-width) - 40px);
-        height: 280px;
+        height: 200px;
         resize: none;
         background-color: var(--tg-theme-secondary-bg-color);
         color: var(--tg-theme-text-color);
@@ -255,11 +256,25 @@ body {
     textarea::placeholder {
         color: var(--tg-theme-hint-color);
     }
+    .newNoteDateContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+            margin: 10px;
+            padding: 5px;
+            background-color: var(--tg-theme-secondary-bg-color);
+            border-radius: 10px;
+            border: none;
+            height: 30px;
+            font-family: Roboto, 'sans-serif';
+            font-size: 16px;
+            outline-color: var(--tg-theme-button-color);
+        }
+    }
     #sendNotes, #closeNote{
-        position: relative;
-        left: 50%;
-        margin: 20px 0;
-        transform: translateX(-50%);
+        display: block;
+        margin: 20px auto;
         font-size: 20px;
         border: none;
         background-color: var(--tg-theme-button-color);
@@ -274,6 +289,12 @@ body {
     overflow: auto;
     max-height: 300px;
     margin: 10px;
+}
+
+.viewNoteDate {
+    color: var(--tg-theme-hint-color);
+    text-align: center;
+    margin-top: 0;
 }
 
 .newNotePopupVisible, .viewNotePopupVisible {

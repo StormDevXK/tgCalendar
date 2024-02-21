@@ -90,6 +90,7 @@ document.addEventListener('click', (e) => {
 })
 document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
     setTimeout(() => {
+        document.querySelector('#newNoteDateTime').value = new Date(new Date().getTime()+10800000).toISOString().slice(0, 16)
         document.querySelector('.newNotePopup').classList.add('newNotePopupVisible')
     }, 1)
 })
@@ -106,6 +107,7 @@ document.querySelector('#sendNotes').addEventListener('click', (e) => {
             userId: tgUserId,
             text: document.querySelector('#newNoteArea').value,
             primaryNote: 0,
+            createdAt: new Date(document.querySelector('#newNoteDateTime').value).getTime(),
         })
     }).then(r => {
         console.log(r)

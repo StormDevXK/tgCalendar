@@ -10,7 +10,7 @@ router.post('/dbapi', async function(req, res, next) {
         res.send(await seq.Note.findAll({where: {userId: req.body.userId}, raw: true}))
     }
     else if(req.body.func === 'sendNewNote') {
-        await seq.Note.create({userId: req.body.userId, text: req.body.text.toString(), primaryNote: 0})
+        await seq.Note.create({userId: req.body.userId, text: req.body.text.toString(), primaryNote: 0, createdAt: req.body.createdAt})
         res.sendStatus(200)
     }
     const t = await seq.Note.findAll({where: {userId: req.body.userId}, raw: true})
