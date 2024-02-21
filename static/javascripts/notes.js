@@ -1,4 +1,13 @@
 // let tgUserId = tg.initDataUnsafe.user.id
+'use strict'
+let tgUserId
+try {
+    let tg = window.Telegram.WebApp
+    tgUserId = tg.initDataUnsafe.user.id
+}
+catch {
+    tgUserId = 0
+}
 
 function updateNotes(){
     document.querySelector('#noteListDiv').innerHTML = ''
@@ -33,8 +42,23 @@ function updateNotes(){
                 noteTextP.innerText = data[i].text
                 noteCardDiv.appendChild(noteLineDiv)
                 noteCardDiv.appendChild(noteTextP)
+                noteCardDiv.id = `noteId${data[i].id}`
+                noteCardDiv.addEventListener('click', (e) => {
+                    console.log(noteCardDiv.id.slice(6))
+                    setTimeout(() => {
+                        document.querySelector('.viewNotePopup').classList.add('viewNotePopupVisible')
+                        document.querySelector('.viewNoteText').innerHTML = data[i].text
+                    }, 1)
+                })
                 document.querySelector('#noteListDiv').appendChild(noteCardDiv)
             }
         }))
 }
 updateNotes()
+
+let noteListChildren = document.querySelector('#noteListDiv').children
+for(let i = 0; i < noteListChildren.length; i++) {
+    noteListChildren.item(i).addEventListener('click', (e) => {
+        console.log(noteListChildren.item(i).id)
+    })
+}

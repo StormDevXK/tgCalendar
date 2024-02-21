@@ -1,12 +1,4 @@
 "use strict"
-let tgUserId
-try {
-    let tg = window.Telegram.WebApp
-    tgUserId = tg.initDataUnsafe.user.id
-}
-catch {
-    tgUserId = 0
-}
 
 let monthNames= ["January","February","March","April","May","June","July",
     "August","September","October","November","December"]
@@ -73,33 +65,27 @@ document.querySelector('#todayTitleText').innerText = daysNames[date.getDay()]
 document.querySelector('#monthLeft').addEventListener('click', (e) => {
     date = new Date(date.getFullYear(), date.getMonth()-1)
     monthGenerator(date)
-    // setTimeout(()=>{
-    //     document.querySelector('.calendarContainer').style.animation = 'shakeLeft 0.2s'
-    // }, 200)
-    // document.querySelector('.calendarContainer').style.animation = ''
+    updateNotes()
 })
 
 document.querySelector('#monthRight').addEventListener('click', (e) => {
     date = new Date(date.getFullYear(), date.getMonth()+1)
     monthGenerator(date)
-    // setTimeout(()=>{
-    //     document.querySelector('.calendarContainer').style.animation = 'shakeRight 0.2s'
-    // }, 200)
-    // document.querySelector('.calendarContainer').style.animation = ''
+    updateNotes()
 })
 
 document.querySelector('.todayTitle').addEventListener('click', (e) => {
     date = new Date()
     monthGenerator(date)
-    // setTimeout(()=>{
-    //     document.querySelector('.calendarContainer').style.animation = 'shake 0.2s'
-    // }, 200)
-    // document.querySelector('.calendarContainer').style.animation = ''
+    updateNotes()
 })
 
 document.addEventListener('click', (e) => {
     if(!document.querySelector('.newNotePopup').contains(e.target) && document.querySelector('.newNotePopup').classList.contains('newNotePopupVisible')){
         document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+    }
+    if(!document.querySelector('.viewNotePopup').contains(e.target) && document.querySelector('.viewNotePopup').classList.contains('viewNotePopupVisible')){
+        document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
     }
 })
 document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
@@ -128,4 +114,8 @@ document.querySelector('#sendNotes').addEventListener('click', (e) => {
             document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
         }
     })
+})
+
+document.querySelector('#closeNote').addEventListener('click', (e) => {
+    document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
 })

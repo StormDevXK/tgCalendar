@@ -87,17 +87,6 @@ body {
     background-color: dimgray;
 }
 
-.eventDot {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    /*--tg-theme-button-color: #b63e3e;*/
-    background-color: var(--tg-theme-button-color);
-    border-radius: 50%;
-    top: 5px;
-    left: 5px;
-}
-
 @media (hover: none) {
     #daysTable td:hover {
         background-color: inherit;
@@ -116,9 +105,8 @@ body {
 }
 
 .daysName td:hover{
-    background-color: var(--tg-theme-bg-color);
-    color: var(--tg-theme-text-color);
-    border-radius: 0;
+    background-color: inherit!important;
+    color: inherit!important;
 }
 
 .anotherMonth {
@@ -131,6 +119,16 @@ body {
     font-weight: 500;
 }
 
+.eventDot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    /*--tg-theme-button-color: #b63e3e;*/
+    background-color: var(--tg-theme-button-color);
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+}
 .arrow {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     transition: 0.1s;
@@ -213,33 +211,40 @@ body {
 
 .noteText {
     margin: auto auto auto 20px;
+    user-select: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.newNotePopup {
+.newNotePopup, .viewNotePopup {
     position: fixed;
     bottom: -500px;
     left: 50%;
     transform: translateX(-50%);
     width: var(--body-width);
-    min-height: 500px;
+    max-height: 500px;
     background-color: var(--tg-theme-bg-color);
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     transition: 0.3s;
     z-index: 999;
-    .newNoteTitle {
+    .newNoteTitle, .viewNoteTitle {
         color: var(--tg-theme-text-color);
         text-align: center;
         font-size: 25px;
         font-weight: 600;
     }
     textarea {
+        font-family: Roboto, 'sans-serif';
+        font-size: 18px;
         border: none;
         border-radius: 20px;
         padding: 10px;
         margin: 10px;
         width: calc(var(--body-width) - 40px);
-        min-height: 200px;
+        height: 280px;
         resize: none;
         background-color: var(--tg-theme-secondary-bg-color);
         color: var(--tg-theme-text-color);
@@ -250,10 +255,12 @@ body {
     textarea::placeholder {
         color: var(--tg-theme-hint-color);
     }
-    #sendNotes{
+    #sendNotes, #closeNote{
         position: relative;
         left: 50%;
+        margin: 20px 0;
         transform: translateX(-50%);
+        font-size: 20px;
         border: none;
         background-color: var(--tg-theme-button-color);
         color: var(--tg-theme-button-text-color);
@@ -263,7 +270,13 @@ body {
     }
 }
 
-.newNotePopupVisible {
+.viewNoteText {
+    overflow: auto;
+    max-height: 300px;
+    margin: 10px;
+}
+
+.newNotePopupVisible, .viewNotePopupVisible {
     bottom: 0;
     box-shadow: 0 0 0 10000px rgba(0,0,0,.5);
 }
