@@ -103,10 +103,6 @@ html {
     }
 }
 
-.daysName {
-    /* background-color: #fff0; */
-}
-
 .daysName td{
     /*background-color: var(--tg-theme-secondary-bg-color);*/
     border-radius: 0;
@@ -225,6 +221,15 @@ html {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.popUpBack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
 }
 
 .newNotePopup, .viewNotePopup {

@@ -48,6 +48,7 @@ function updateNotes(){
                         document.querySelector('.viewNotePopup').classList.add('viewNotePopupVisible')
                         document.querySelector('.viewNoteText').innerHTML = data[i].text
                         document.querySelector('.viewNoteDate').innerHTML = new Date(data[i].createdAt).toLocaleString()
+                        document.querySelector('.popUpBack').style.display = 'block'
                     }, 1)
                 })
                 document.querySelector('#noteListDiv').appendChild(noteCardDiv)

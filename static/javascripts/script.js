@@ -83,15 +83,18 @@ document.querySelector('.todayTitle').addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
     if(!document.querySelector('.newNotePopup').contains(e.target) && document.querySelector('.newNotePopup').classList.contains('newNotePopupVisible')){
         document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+        document.querySelector('.popUpBack').style.display = 'none'
     }
     if(!document.querySelector('.viewNotePopup').contains(e.target) && document.querySelector('.viewNotePopup').classList.contains('viewNotePopupVisible')){
         document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
+        document.querySelector('.popUpBack').style.display = 'none'
     }
 })
 document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
     setTimeout(() => {
         document.querySelector('#newNoteDateTime').value = new Date(new Date().getTime()+10800000).toISOString().slice(0, 16)
         document.querySelector('.newNotePopup').classList.add('newNotePopupVisible')
+        document.querySelector('.popUpBack').style.display = 'block'
     }, 1)
 })
 
@@ -114,10 +117,12 @@ document.querySelector('#sendNotes').addEventListener('click', (e) => {
         if(r.status === 200) {
             updateNotes()
             document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+            document.querySelector('.popUpBack').style.display = 'none'
         }
     })
 })
 
 document.querySelector('#closeNote').addEventListener('click', (e) => {
     document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
+    document.querySelector('.popUpBack').style.display = 'none'
 })
