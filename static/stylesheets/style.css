@@ -239,7 +239,8 @@ html {
     transform: translateX(-50%);
     width: var(--body-width);
     max-height: 500px;
-    background-color: var(--tg-theme-bg-color);
+    background-color: color-mix(in srgb, var(--tg-theme-bg-color), transparent 70%);
+    backdrop-filter: blur(8px);
     border-top-right-radius: 30px;
     border-top-left-radius: 30px;
     transition: 0.3s;
