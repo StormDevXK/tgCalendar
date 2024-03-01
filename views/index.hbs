@@ -24,6 +24,7 @@
     <div id="noteListDiv"></div>
 </div>
 <div class="newNotePopup">
+    <i id="closeNewNote" class="fa-solid fa-xmark"></i>
     <p class="newNoteTitle">New note</p>
     <textarea placeholder="Write your note" id="newNoteArea"></textarea>
     <div class="newNoteDateContainer">
@@ -37,9 +38,14 @@
     <button id="sendNotes">Save note</button>
 </div>
 <div class="viewNotePopup">
+    <i id="closeNote" class="fa-solid fa-xmark"></i>
     <p class="viewNoteTitle">View note</p>
     <p class="viewNoteDate">null</p>
     <p class="viewNoteText"></p>
 <!--    <textarea placeholder="Write your note" id="editNoteArea"></textarea>-->
-    <button id="closeNote">Close note</button>
+<!--    <button id="closeNote">Close note</button>-->
+    <div class="popup-action-button-container">
+        <button id="deleteNote" class="popup-action-button"><i class="fa-solid fa-trash"></i></button>
+<!--        <button id="editNote" class="popup-action-button"><i class="fa-regular fa-pen-to-square"></i></button>-->
+    </div>
 </div>

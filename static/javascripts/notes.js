@@ -1,6 +1,7 @@
 // let tgUserId = tg.initDataUnsafe.user.id
 'use strict'
 let tgUserId
+let lastNoteId
 try {
     let tg = window.Telegram.WebApp
     tgUserId = tg.initDataUnsafe.user.id
@@ -49,6 +50,7 @@ function updateNotes(){
                         document.querySelector('.viewNoteText').innerHTML = data[i].text
                         document.querySelector('.viewNoteDate').innerHTML = new Date(data[i].createdAt).toLocaleString()
                         document.querySelector('.popUpBack').style.display = 'block'
+                        lastNoteId = data[i].id
                     }, 1)
                 })
                 document.querySelector('#noteListDiv').appendChild(noteCardDiv)
@@ -63,3 +65,54 @@ for(let i = 0; i < noteListChildren.length; i++) {
         console.log(noteListChildren.item(i).id)
     })
 }
+
+document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
+    setTimeout(() => {
+        document.querySelector('#newNoteDateTime').value = new Date(new Date().getTime()+10800000).toISOString().slice(0, 16)
+        document.querySelector('.newNotePopup').classList.add('newNotePopupVisible')
+        document.querySelector('.popUpBack').style.display = 'block'
+    }, 1)
+})
+
+document.querySelector('#sendNotes').addEventListener('click', (e) => {
+    fetch('/dbapi', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            func: 'sendNewNote',
+            userId: tgUserId,
+            text: document.querySelector('#newNoteArea').value,
+            primaryNote: 0,
+            createdAt: new Date(document.querySelector('#newNoteDateTime').value).getTime(),
+        })
+    }).then(r => {
+        console.log(r)
+        if(r.status === 200) {
+            updateNotes()
+            document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
+            document.querySelector('.popUpBack').style.display = 'none'
+        }
+    })
+})
+
+document.querySelector('#deleteNote').addEventListener('click', (e) => {
+    fetch('/dbapi', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+            func: 'deleteNote',
+            userId: tgUserId,
+            noteId: lastNoteId,
+        })
+    }).then(r => {
+        if (r.status === 200) {
+            document.querySelector(`#noteId${lastNoteId}`).remove()
+            document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
+            document.querySelector('.popUpBack').style.display = 'none'
+        }
+    })
+})

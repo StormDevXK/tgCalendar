@@ -90,39 +90,12 @@ document.addEventListener('click', (e) => {
         document.querySelector('.popUpBack').style.display = 'none'
     }
 })
-document.querySelector('#newNoteBtn').addEventListener('click', (e) => {
-    setTimeout(() => {
-        document.querySelector('#newNoteDateTime').value = new Date(new Date().getTime()+10800000).toISOString().slice(0, 16)
-        document.querySelector('.newNotePopup').classList.add('newNotePopupVisible')
-        document.querySelector('.popUpBack').style.display = 'block'
-    }, 1)
-})
-
-document.querySelector('#sendNotes').addEventListener('click', (e) => {
-    fetch('/dbapi', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({
-            func: 'sendNewNote',
-            // userId: tg.initDataUnsafe.user.id,
-            userId: tgUserId,
-            text: document.querySelector('#newNoteArea').value,
-            primaryNote: 0,
-            createdAt: new Date(document.querySelector('#newNoteDateTime').value).getTime(),
-        })
-    }).then(r => {
-        console.log(r)
-        if(r.status === 200) {
-            updateNotes()
-            document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
-            document.querySelector('.popUpBack').style.display = 'none'
-        }
-    })
-})
 
 document.querySelector('#closeNote').addEventListener('click', (e) => {
     document.querySelector('.viewNotePopup').classList.remove('viewNotePopupVisible')
+    document.querySelector('.popUpBack').style.display = 'none'
+})
+document.querySelector('#closeNewNote').addEventListener('click', (e) => {
+    document.querySelector('.newNotePopup').classList.remove('newNotePopupVisible')
     document.querySelector('.popUpBack').style.display = 'none'
 })

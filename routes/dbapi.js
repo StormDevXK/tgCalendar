@@ -13,8 +13,18 @@ router.post('/dbapi', async function(req, res, next) {
         await seq.Note.create({userId: req.body.userId, text: req.body.text.toString(), primaryNote: 0, createdAt: req.body.createdAt})
         res.sendStatus(200)
     }
-    const t = await seq.Note.findAll({where: {userId: req.body.userId}, raw: true})
-    console.log(t)
+    else if((req.body.func === 'deleteNote')) {
+        const row = await seq.Note.findOne({
+            where: {
+                id: req.body.noteId,
+                userId: req.body.userId,
+            },
+        })
+        await row.destroy()
+        res.sendStatus(200)
+    }
+    // const t = await seq.Note.findAll({where: {userId: req.body.userId}, raw: true})
+    // console.log(t)
 })
 
 module.exports = router
